@@ -1,0 +1,36 @@
+import random
+
+perimetr_ocean = int(input("введите размер океана(не менее 7): "))
+
+matrix = [[0 for i in range(perimetr_ocean)] for j in range(perimetr_ocean)]
+
+
+x = 0
+y = 0
+
+while x == 0 or y == 0:
+    x = random.randint(0, perimetr_ocean)
+    y = random.randint(0, perimetr_ocean)
+    if x == 0 or x == perimetr_ocean - 1 or y == 0 or y == perimetr_ocean - 1:
+        continue
+    else:
+        matrix[y][x] = 'x'
+
+    matrix[y-1][x-1] = '1'
+    matrix[y][x-1] = '1'
+    matrix[y-1][x] = '1'
+    matrix[y+1][x] = '1'
+    matrix[y][x+1] = '1'
+    matrix[y+1][x+1] = '1'
+    matrix[y+1][x-1] = '1'
+    matrix[y-1][x+1] = '1'
+    matrix[y-2][x-2] = '1'
+    matrix[y+2][x+2] = '1'
+    matrix[y+2][x+1] = '1'
+    matrix[y-2][x] = '1'
+    matrix[y+2][x] = '1'
+    matrix[y-2][x-1] = '1'
+for row in matrix:
+    for element in row:
+        print(element, end='\t')
+    print()
